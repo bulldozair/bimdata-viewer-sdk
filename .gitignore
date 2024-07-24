@@ -20,4 +20,6 @@ yarn-error.log*
 *.sln
 *.sw?
 
+src/plugins/*/dist/*.plugin.js
+
 .watch-plugin.rc
