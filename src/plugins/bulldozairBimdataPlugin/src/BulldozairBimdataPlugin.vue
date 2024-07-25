@@ -25,7 +25,6 @@ export default {
                     noteId,
                     positionId,
                     moveDone() {
-                        this.$viewer.globalContext.hub.emit('bz-annotation-move', { annotation });
                     },
                     moveTo(position) {
                         return Object.assign(annotation, position)
