@@ -16,19 +16,21 @@ export default {
         return null;
     },
     methods: {
-        createAnnotation: ({ x, y, z, number }) => {
+        createAnnotation: ({ x, y, z, number, noteId, positionId }) => {
             const { state } = this.$viewer;
             const annotation = state.addAnnotation({
                 component: BulldozairAnnotation,
                 props: {
                     index: number,
-                    moveDone: () => {
+                    noteId,
+                    positionId,
+                    moveDone() {
                         this.$viewer.globalContext.hub.emit('bz-annotation-move', { annotation });
                     },
-                    moveTo: (position) => {
+                    moveTo(position) {
                         return Object.assign(annotation, position)
                     },
-                    remove: () => {
+                    remove() {
                         this.$viewer.globalContext.hub.emit('bz-annotation-remove', { annotation });
                         return state.removeAnnotation(annotation)
                     },
@@ -43,26 +45,7 @@ export default {
         const { state } = this.$viewer;
         const context = this.$viewer.localContext;
         context.startAnnotationMode(({ x, y, z, object }) => {
-            const annotation = state.addAnnotation({
-                component: BulldozairAnnotation,
-                props: {
-                    index: ++this.index,
-                    moveDone: () => {
-                        this.$viewer.globalContext.hub.emit('bz-annotation-move', { annotation, object });
-                    },
-                    moveTo: (position) => {
-                        return Object.assign(annotation, position)
-                    },
-                    remove: () => {
-                        this.$viewer.globalContext.hub.emit('bz-annotation-remove', { annotation });
-                        return state.removeAnnotation(annotation)
-                    },
-                },
-                x,
-                y,
-                z,
-            });
-            this.$viewer.globalContext.hub.emit('bz-annotation-create', { annotation, object });
+            this.$viewer.globalContext.hub.emit('bz-annotation-create', { x, y, z, object });
             context.stopAnnotationMode();
             this.$close();
         });
@@ -71,25 +54,26 @@ export default {
 </script>
 
 <style>
-.ifc-annotation {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid var(--color-primary);
-    background-color: var(--color-high);
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bulldozair-annotation {
     user-select: none;
     cursor: grab;
+    margin-top: -62.5px;
+    margin-left: -17.5px;
 }
 
-.ifc-annotation.grabbing {
+.bulldozair-annotation .bulldozair-annotation-label {
+    background: white;
+    padding: 2px;
+    border-radius: 4px;
+    width: 35px;
+    text-align: center
+}
+
+.bulldozair-annotation.grabbing {
     cursor: grabbing;
 }
 
-.ifc-annotation:focus {
+.bulldozair-annotation:focus {
     border: 2px solid var(--color-high);
     background-color: var(--color-warning);
 }
