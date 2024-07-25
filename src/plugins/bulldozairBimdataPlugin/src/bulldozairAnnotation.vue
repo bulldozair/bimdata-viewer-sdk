@@ -1,7 +1,7 @@
 <template>
     <div
         class="bulldozair-annotation"
-        @click="onAnnotationClick"
+        ref="marker"
         :class="{ grabbing }"
     >
         <div class="bulldozair-annotation-label">{{ index }}</div>
@@ -26,7 +26,6 @@
             </g>
         </svg>
     </div>
-
 </template>
 <script>
 export default {
@@ -52,7 +51,6 @@ export default {
     },
     methods: {
         onAnnotationClick() {
-            console.log(this.noteId, this.positionId);
             this.$viewer.globalContext.hub.emit('bz-annotation-click', { noteId: this.noteId, positionId: this.positionId });
         },
         onMouseDown() {

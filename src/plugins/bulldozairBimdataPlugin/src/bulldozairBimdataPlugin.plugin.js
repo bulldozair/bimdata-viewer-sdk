@@ -8,7 +8,7 @@ export default {
   button: {
     position: "right",
     keepOpen: true,
-    tooltip: "ifcAnnotations.tooltip",
+    tooltip: "BulldozairBimdataPluginPlugin.tooltip",
     icon: {
       component: "BIMDataIconLocation",
       options: { size: "m" },
@@ -16,10 +16,10 @@ export default {
   },
   i18n: {
     en: {
-      tooltip: "BulldozairBimdataPlugin is awesome!",
+      tooltip: "Add a positionned task on the model",
     },
     fr: {
-      tooltip: "BulldozairBimdataPlugin est génial !",
+      tooltip: "Ajouter une tâche positionnée sur le modèle",
     },
   },
 };
