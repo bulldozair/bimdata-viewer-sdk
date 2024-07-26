@@ -55,7 +55,7 @@ export default {
 <style>
 .bulldozair-annotation {
     user-select: none;
-    cursor: grab;
+    cursor: pointer;
     margin-top: -62.5px;
     margin-left: -17.5px;
 }
