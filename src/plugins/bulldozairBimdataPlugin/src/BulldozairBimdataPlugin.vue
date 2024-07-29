@@ -16,7 +16,7 @@ export default {
         return null;
     },
     methods: {
-        createAnnotation: ({ x, y, z, number, noteId, positionId }) => {
+        createAnnotation({ x, y, z, number, noteId, positionId }) {
             const { state } = this.$viewer;
             const annotation = state.addAnnotation({
                 component: BulldozairAnnotation,
@@ -58,6 +58,8 @@ export default {
     cursor: pointer;
     margin-top: -62.5px;
     margin-left: -17.5px;
+    width: 35px;
+    height: 65px;
 }
 
 .bulldozair-annotation .bulldozair-annotation-label {
