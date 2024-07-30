@@ -12,7 +12,7 @@
             height="35px"
             viewBox="0 0 24 24"
             width="35px"
-            fill="#e8eaed"
+            :style="{ fill: pinColor }"
         >
             <path
                 d="M0 0h24v24H0z"
@@ -35,6 +35,7 @@ export default {
         moveTo: Function,
         moveDone: Function,
         remove: Function,
+        pinColor: String,
     },
     data() {
         return {
@@ -120,7 +121,6 @@ export default {
                     y: y - cy + movementY,
                 });
             }
-            console.log(position);
 
             return position;
         }

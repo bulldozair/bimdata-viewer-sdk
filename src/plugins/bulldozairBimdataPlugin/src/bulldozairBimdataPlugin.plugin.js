@@ -2,7 +2,7 @@ import BulldozairBimdataPluginComponent from './BulldozairBimdataPlugin.vue';
 import icon from '../assets/icon.svg';
 
 export default {
-    name: 'BulldozairBimdataPluginPlugin', // The name of the plugin
+    name: 'BulldozairBimdataPluginPlugin',
     component: BulldozairBimdataPluginComponent,
     addToWindows: ['3d', '2d'],
     button: {

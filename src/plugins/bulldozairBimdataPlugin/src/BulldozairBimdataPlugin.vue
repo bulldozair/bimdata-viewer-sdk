@@ -16,7 +16,7 @@ export default {
         return null;
     },
     methods: {
-        createAnnotation({ x, y, z, number, noteId, positionId }) {
+        createAnnotation({ x, y, z, number, noteId, positionId, pinColor }) {
             const { state } = this.$viewer;
             const annotation = state.addAnnotation({
                 component: BulldozairAnnotation,
@@ -24,6 +24,7 @@ export default {
                     index: number,
                     noteId,
                     positionId,
+                    pinColor,
                     moveDone() {
                     },
                     moveTo(position) {
