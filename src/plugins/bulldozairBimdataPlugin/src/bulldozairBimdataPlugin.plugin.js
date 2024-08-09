@@ -1,5 +1,4 @@
 import BulldozairBimdataPluginComponent from './BulldozairBimdataPlugin.vue';
-import icon from '../assets/icon.svg';
 
 export default {
     name: 'BulldozairBimdataPluginPlugin',
