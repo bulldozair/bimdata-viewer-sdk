@@ -50,14 +50,8 @@ export default {
             ratios: [50, 50],
             direction: 'column',
             children: [
-                {
-                    ratios: [25, 75],
-                    children: ['structure', '2d'],
-                },
-                {
-                    ratios: [25, 75],
-                    children: ['properties', '3d'],
-                },
+                '2d',
+                '3d',
             ],
         });
 
