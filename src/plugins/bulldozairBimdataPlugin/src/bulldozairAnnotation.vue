@@ -6,7 +6,10 @@
         ref="marker"
         :class="{ grabbing }"
     >
-        <div class="bulldozair-annotation-label">{{ index }}</div>
+        <div
+            class="bulldozair-annotation-label"
+            v-if="index !== undefined"
+        >{{ index }}</div>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             height="35px"
@@ -58,6 +61,7 @@ export default {
         onAnnotationClick() {
             if (!this.moved) {
                 this.$viewer.globalContext.hub.emit('bz-annotation-click', { noteId: this.noteId, positionId: this.positionId });
+                console.log(this.$refs.marker.getBoundingClientRect())
             }
         },
         onMouseDown(event) {
@@ -75,12 +79,15 @@ export default {
             if (!this.moved) {
                 this.onAnnotationClick();
             } else {
-                const position = this.getCurrentPosition(event);
-                this.$viewer.globalContext.hub.emit('bz-annotation-move', { noteId: this.noteId, positionId: this.positionId, position });
-                this.moveDone();
+                this.moved = false;
+                this.moveDone(this.getCurrentPosition(event));
             }
         },
         onMouseMove(event) {
+            const windowName = this.localContext.window.name;
+            if(windowName === '2d') {
+                return;
+            } 
             const { clientX, clientY } = event;
             const deltaX = clientX - this.initialPosition.x;
             const deltaY = clientY - this.initialPosition.y;
@@ -112,10 +119,8 @@ export default {
                 const { movementX, movementY } = event;
                 const engine2d = this.localContext.viewer.viewer;
                 const { x: cx, y: cy } = engine2d.canvas.getBoundingClientRect();
-                
-                console.log('engine2d.canvas.getBoundingClientRect()', engine2d.canvas.getBoundingClientRect());
+
                 const { x, y } = this.$refs.marker.getBoundingClientRect();
-                console.log('this.$refs.marker.getBoundingClientRect()', this.$refs.marker.getBoundingClientRect());
                 position = engine2d.camera.getPosition({
                     x: x - cx + movementX,
                     y: y - cy + movementY,

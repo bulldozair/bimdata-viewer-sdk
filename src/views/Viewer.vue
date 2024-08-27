@@ -50,14 +50,8 @@ export default {
             ratios: [50, 50],
             direction: 'column',
             children: [
-                {
-                    ratios: [25, 75],
-                    children: ['structure', '2d'],
-                },
-                {
-                    ratios: [25, 75],
-                    children: ['properties', '3d'],
-                },
+                '2d',
+                '3d',
             ],
         });
         bimdataViewer.$viewer.globalContext.hub.on("bz-annotation-create", ({ x, y, z, object }) => {
@@ -81,7 +75,9 @@ export default {
             console.log("3d-model-loaded", payload);
             const { globalContext } = bimdataViewer.$viewer;
             const pluginInstance = globalContext.plugins.get('BulldozairBimdataPluginPlugin')[0];
-            pluginInstance.createAnnotation({ x: 7.855044131214674, y: 17.953135312432774, z: 1.3085887913883143, number: 123, noteId: '7b9e65d8-21ef-4cf5-98f0-ca7bec64abe5', positionId: 'cb654d02-52bb-4cb1-be13-74376e023a47', pinColor: 'lightblue' });
+            // pluginInstance.createAnnotation({ x: 7.855044131214674, y: 17.953135312432774, z: 1.3085887913883143, number: 123, noteId: '7b9e65d8-21ef-4cf5-98f0-ca7bec64abe5', positionId: 'cb654d02-52bb-4cb1-be13-74376e023a47', pinColor: '#7830fe' });
+            // pluginInstance.createAnnotation({ x: 7.855044131214674, y: 12.953135312432774, z: 1.3085887913883143, noteId: '7b9e65d8-21ef-4cf5-98f0-ca7bec64abe5', positionId: 'cb654d02-52bb-4cb1-be13-74376e023a47', pinColor: '#7830fe' });
+            pluginInstance.createAnnotation({ number: 267, x: 3.990304062299249, y: 13.836895171046026, z: 6.459193476225174, noteId: '7b9e65d8-21ef-4cf5-98f0-ca7bec64abe5', positionId: 'cb654d02-52bb-4cb1-be13-74376e023a47', pinColor: '#7830fe' });
         });
         bimdataViewer.$viewer.globalContext.hub.on("2d-model-loaded", payload => {
             console.log("2d-model-loaded", payload);

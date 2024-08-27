@@ -25,7 +25,8 @@ export default {
                     noteId,
                     positionId,
                     pinColor,
-                    moveDone() {
+                    moveDone(position) {
+                        this.$viewer.globalContext.hub.emit('bz-annotation-move', { noteId: this.noteId, positionId: this.positionId, position });
                     },
                     moveTo(position) {
                         return Object.assign(annotation, position)
@@ -57,10 +58,10 @@ export default {
 .bulldozair-annotation {
     user-select: none;
     cursor: pointer;
-    margin-top: -62.5px;
+    margin-top: -56px;
     margin-left: -17.5px;
     width: 35px;
-    height: 65px;
+    height: 56px;
 }
 
 .bulldozair-annotation .bulldozair-annotation-label {
