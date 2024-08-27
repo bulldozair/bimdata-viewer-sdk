@@ -7,7 +7,7 @@ export default {
     },
     methods: {
         createAnnotation({ x, y, z, number, noteId, positionId, pinColor }) {
-           this.$viewer.state.addAnnotation({
+            this.$viewer.state.addAnnotation({
                 component: BulldozairAnnotation,
                 props: {
                     index: number,
@@ -36,10 +36,10 @@ export default {
 .bulldozair-annotation {
     user-select: none;
     cursor: pointer;
-    margin-top: -62.5px;
+    margin-top: -52px;
     margin-left: -17.5px;
     width: 35px;
-    height: 65px;
+    height: 52px;
 }
 
 .bulldozair-annotation .bulldozair-annotation-label {

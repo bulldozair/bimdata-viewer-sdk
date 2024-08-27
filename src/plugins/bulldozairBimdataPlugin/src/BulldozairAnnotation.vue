@@ -5,7 +5,7 @@
         @mousemove="onMouseMove"
         @mouseup="onMouseUp"
     >
-        <div class="bulldozair-annotation-label">
+        <div class="bulldozair-annotation-label" v-show="index !== undefined">
             {{ index }}
         </div>
         <svg
@@ -29,6 +29,7 @@
 <script>
 export default {
     props: {
+        annotation: Object,
         index: Number,
         noteId: String,
         positionId: String,
@@ -45,6 +46,7 @@ export default {
         onMouseDown(event) {
             this.grabbing = true;
             this.moved = false;
+            
             this.initialPosition = { x: event.clientX, y: event.clientY };
         },
         onMouseMove(event) {
@@ -54,12 +56,18 @@ export default {
 
             this.moved = Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5;
         },
-        onMouseUp() {
+        onMouseUp(event) {
             this.grabbing = false;
             if (!this.moved) {
                 this.$viewer.globalContext.hub.emit('bz-annotation-click', {
                     noteId: this.noteId,
                     positionId: this.positionId
+                });
+            } else {
+                this.$viewer.globalContext.hub.emit('bz-annotation-move', {
+                    noteId: this.noteId,
+                    positionId: this.positionId,
+                    position: { x: this.annotation.x, y: this.annotation.y, z: this.annotation.z },
                 });
             }
         },
