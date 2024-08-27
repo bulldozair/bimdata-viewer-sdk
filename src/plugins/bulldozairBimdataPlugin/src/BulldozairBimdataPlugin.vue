@@ -1,40 +1,19 @@
-<template>
-    <!-- https://vuejs.org/guide/essentials/template-syntax.html -->
-    <div></div>
-</template>
-
 <script>
-import BulldozairAnnotation from './bulldozairAnnotation.vue';
+import BulldozairAnnotation from './BulldozairAnnotation.vue';
 
 export default {
-    data() {
-        return {
-            index: 0,
-        };
-    },
     render() {
         return null;
     },
     methods: {
         createAnnotation({ x, y, z, number, noteId, positionId, pinColor }) {
-            const { state } = this.$viewer;
-            const annotation = state.addAnnotation({
+            this.$viewer.state.addAnnotation({
                 component: BulldozairAnnotation,
                 props: {
                     index: number,
                     noteId,
                     positionId,
                     pinColor,
-                    moveDone(position) {
-                        this.$viewer.globalContext.hub.emit('bz-annotation-move', { noteId: this.noteId, positionId: this.positionId, position });
-                    },
-                    moveTo(position) {
-                        return Object.assign(annotation, position)
-                    },
-                    remove() {
-                        this.$viewer.globalContext.hub.emit('bz-annotation-remove', { annotation });
-                        return state.removeAnnotation(annotation)
-                    },
                 },
                 x,
                 y,
@@ -43,7 +22,6 @@ export default {
         },
     },
     onOpen() {
-        const { state } = this.$viewer;
         const context = this.$viewer.localContext;
         context.startAnnotationMode(({ x, y, z, object }) => {
             this.$viewer.globalContext.hub.emit('bz-annotation-create', { x, y, z, object });
@@ -58,10 +36,10 @@ export default {
 .bulldozair-annotation {
     user-select: none;
     cursor: pointer;
-    margin-top: -56px;
+    margin-top: -52px;
     margin-left: -17.5px;
     width: 35px;
-    height: 56px;
+    height: 52px;
 }
 
 .bulldozair-annotation .bulldozair-annotation-label {
