@@ -31,6 +31,7 @@
 <script>
 export default {
     props: {
+        annotation: Object,
         index: Number,
         noteId: String,
         positionId: String,
@@ -62,6 +63,12 @@ export default {
                 this.$viewer.globalContext.hub.emit('bz-annotation-click', {
                     noteId: this.noteId,
                     positionId: this.positionId
+                });
+            } else {
+                this.$viewer.globalContext.hub.emit('bz-annotation-move', {
+                    noteId: this.noteId,
+                    positionId: this.positionId,
+                    position: { x: this.annotation.x, y: this.annotation.y, z: this.annotation.z },
                 });
             }
         },
