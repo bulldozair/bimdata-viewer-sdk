@@ -91,6 +91,7 @@ export default {
                 y: 17.953135312432774,
                 z: 1.3085887913883143,
                 number: 123,
+                strikeThrough: true,
                 noteId: '7b9e65d8-21ef-4cf5-98f0-ca7bec64abe5',
                 positionId: 'cb654d02-52bb-4cb1-be13-74376e023a47',
                 pinColor: 'lightblue'

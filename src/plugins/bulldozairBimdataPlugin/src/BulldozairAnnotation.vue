@@ -7,6 +7,7 @@
     >
         <div 
             class="bulldozair-annotation-label"
+            :class="{ 'strike-through': strikeThrough }"
             v-if="index !== undefined">
             {{ index }}
         </div>
@@ -36,6 +37,7 @@ export default {
         noteId: String,
         positionId: String,
         pinColor: String,
+        strikeThrough: Boolean,
     },
     data() {
         return {

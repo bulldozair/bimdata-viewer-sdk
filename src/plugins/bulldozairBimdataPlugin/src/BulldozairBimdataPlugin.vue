@@ -6,7 +6,7 @@ export default {
         return null;
     },
     methods: {
-        createAnnotation({ x, y, z, number, noteId, positionId, pinColor }) {
+        createAnnotation({ x, y, z, number, noteId, positionId, pinColor, strikeThrough }) {
             this.$viewer.state.addAnnotation({
                 component: BulldozairAnnotation,
                 props: {
@@ -14,6 +14,7 @@ export default {
                     noteId,
                     positionId,
                     pinColor,
+                    strikeThrough,
                 },
                 x,
                 y,
@@ -48,6 +49,9 @@ export default {
     border-radius: 4px;
     width: 35px;
     text-align: center
+}
+.bulldozair-annotation .bulldozair-annotation-label.strike-through {
+    text-decoration: line-through;
 }
 
 .bulldozair-annotation.grabbing {
