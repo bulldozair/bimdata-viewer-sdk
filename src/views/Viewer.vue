@@ -94,7 +94,8 @@ export default {
                 strikeThrough: true,
                 noteId: '7b9e65d8-21ef-4cf5-98f0-ca7bec64abe5',
                 positionId: 'cb654d02-52bb-4cb1-be13-74376e023a47',
-                pinColor: 'lightblue'
+                pinColor: 'lightblue',
+                draggable: false
             });
         });
 

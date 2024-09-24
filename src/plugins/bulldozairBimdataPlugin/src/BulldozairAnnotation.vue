@@ -38,6 +38,7 @@ export default {
         positionId: String,
         pinColor: String,
         strikeThrough: Boolean,
+        draggable: Boolean,
     },
     data() {
         return {

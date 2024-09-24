@@ -6,7 +6,7 @@ export default {
         return null;
     },
     methods: {
-        createAnnotation({ x, y, z, number, noteId, positionId, pinColor, strikeThrough }) {
+        createAnnotation({ x, y, z, number, noteId, positionId, pinColor, strikeThrough, draggable = true }) {
             this.$viewer.state.addAnnotation({
                 component: BulldozairAnnotation,
                 props: {
@@ -15,6 +15,7 @@ export default {
                     positionId,
                     pinColor,
                     strikeThrough,
+                    draggable,
                 },
                 x,
                 y,
