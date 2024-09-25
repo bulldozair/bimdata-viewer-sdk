@@ -3,7 +3,10 @@
         class="bulldozair-annotation"
         @mousedown="onMouseDown"
         @mousemove="onMouseMove"
+        @touchmove="onMouseMove"
         @mouseup="onMouseUp"
+        @touchend="onMouseUp"
+        @touchcancel="onMouseUp"
     >
         <div 
             class="bulldozair-annotation-label"
@@ -38,7 +41,6 @@ export default {
         positionId: String,
         pinColor: String,
         strikeThrough: Boolean,
-        draggable: Boolean,
     },
     data() {
         return {
