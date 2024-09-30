@@ -2,6 +2,7 @@
     <div
         class="bulldozair-annotation"
         @mousedown="onMouseDown"
+        @touchstart="onMouseDown"
         @mousemove="onMouseMove"
         @touchmove="onMouseMove"
         @mouseup="onMouseUp"
