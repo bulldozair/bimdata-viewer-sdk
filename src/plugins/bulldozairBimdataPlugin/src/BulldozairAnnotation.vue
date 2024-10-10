@@ -54,9 +54,19 @@ export default {
         onMouseDown(event) {
             this.grabbing = true;
             this.moved = false;
+            if (event.targetTouches) {
+                // If event comes from a touch, we hack the clientX and clientY values so the next steps on the process work the same
+                event.clientX = event.targetTouches[0].clientX;
+                event.clientY = event.targetTouches[0].clientY;
+            }
             this.initialPosition = { x: event.clientX, y: event.clientY };
         },
         onMouseMove(event) {
+            if (event.targetTouches) {
+                // If event comes from a touch, we hack the clientX and clientY values so the next steps on the process work the same
+                event.clientX = event.targetTouches[0].clientX;
+                event.clientY = event.targetTouches[0].clientY;
+            }
             const { clientX, clientY } = event;
             const deltaX = clientX - this.initialPosition?.x ?? 0;
             const deltaY = clientY - this.initialPosition?.y ?? 0;
